@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const projectData = [
     {
         id: "project1",
-        images: ["static/img/portfolio/portfolio-details-1.png", "static/img/portfolio/portfolio-details-2.png", "static/img/portfolio/portfolio-details-3.png"],
+        images: ["../img/portfolio/portfolio-details-1.png", "static/img/portfolio/portfolio-details-2.png", "static/img/portfolio/portfolio-details-3.png"],
         info: {
             category: "Website Development",
             date: "June, 2025",
@@ -300,32 +300,34 @@ const projectData = [
     },
     {
         id: "project3",
-        images: ["static/img/portfolio/portfolio-details-1.png", "static/img/portfolio/portfolio-details-2.png", "static/img/portfolio/portfolio-details-3.png"],
+        images: ["static/img/portfolio/portfolio-details-16.png", "static/img/portfolio/portfolio-details-21.png", 
+            "static/img/portfolio/portfolio-details-23.png","static/img/portfolio/portfolio-details-17.png",
+            "static/img/portfolio/portfolio-details-18.png","static/img/portfolio/portfolio-details-19.png",
+            "static/img/portfolio/portfolio-details-20.png","static/img/portfolio/portfolio-details-22.png"],
         info: {
             category: "Website Development",
             date: "July, 2025",
-            url: "https://github.com/elaiyarani-s/MyPortfolio-Django.git",
+            url: "https://github.com/elaiyarani-s/MyPortfolio-Django",
             urlText: "MyPortfolio",
         },
         description: {
-            title: "My Personal Portfolio",
+            title: "MyPortfolio - Django",
             points: ["Built a portfolio web app using Django, showcasing my background, projects, and blog posts. Features user authentication, responsive design, and deploy-ready architecture"],
         },
     },
     {
-        id: "project3",
-        images: ["static/img/portfolio/portfolio-details-7.png", "static/img/portfolio/portfolio-details-8.png",
-             "static/img/portfolio/portfolio-details-9.png","static/img/portfolio/portfolio-details-10.png"
-            ,"static/img/portfolio/portfolio-details-11.png","static/img/portfolio/portfolio-details-12.png"
+        id: "project4",
+        images: ["static/img/portfolio/portfolio-details-7.png", "static/img/portfolio/portfolio-details-10.png","static/img/portfolio/portfolio-details-9.png",
+            "static/img/portfolio/portfolio-details-8.png","static/img/portfolio/portfolio-details-11.png","static/img/portfolio/portfolio-details-12.png"
         ,"static/img/portfolio/portfolio-details-13.png","static/img/portfolio/portfolio-details-14.png","static/img/portfolio/portfolio-details-15.png"],
         info: {
             category: "Website Development",
             date: "July, 2025",
-            url: "https://github.com/project-django-group5/Skillswap.git",
-            urlText: "MyPortfolio",
+            url: "https://github.com/project-django-group5/Skillswap",
+            urlText: "SkillSwap",
         },
         description: {
-            title: "My Personal Portfolio",
+            title: "SkillSwap",
             points: ["Developed a skill sharing platform using Django, Javascript, HTML, CSS and Bootstrap 5.", "Dark/light theme toggle", "Responsive across all screens"],
         },
     },
@@ -384,6 +386,12 @@ class ProjectViewer {
     `;
 
         // Swiper initialization
+        new Swiper(".portfolio-details-slider", {
+            speed: 400,
+            loop: true,
+            autoplay: { delay: 5000, disableOnInteraction: false },
+            pagination: { el: ".swiper-pagination", type: "bullets", clickable: true },
+        });
     }
 }
 document.addEventListener("DOMContentLoaded", () => {

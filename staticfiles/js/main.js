@@ -1,3 +1,30 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.getElementById('darkModeToggle');
+  const root = document.documentElement;
+
+  function updateTheme(isDark) {
+    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    localStorage.setItem('dark-mode', isDark ? 'enabled' : 'disabled');
+    toggle.textContent = isDark ? '☀️' : '🌙';
+    toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+
+  const storedPreference = localStorage.getItem('dark-mode');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let isDark = storedPreference === 'enabled' || (storedPreference === null && prefersDark);
+
+  updateTheme(isDark);
+
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      isDark = !isDark;
+      updateTheme(isDark);
+    });
+  }
+});
+
+
+
 (function () {
     "use strict";
 
@@ -91,7 +118,7 @@
     });
 
     /**
-     * Scrool with ofset on links with a class name .scrollto
+     * Scroll with ofset on links with a class name .scrollto
      */
     on(
         "click",
@@ -215,34 +242,6 @@
         },
     });
 
-    /**
-     * Testimonials slider
-     */
-    new Swiper(".testimonials-slider", {
-        speed: 600,
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        slidesPerView: "auto",
-        pagination: {
-            el: ".swiper-pagination",
-            type: "bullets",
-            clickable: true,
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-
-            1200: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-            },
-        },
-    });
 
     /**
      * Animation on scroll
@@ -256,19 +255,16 @@
         });
     });
 
-    /**
-     * Initiate Pure Counter
-     */
-    new PureCounter();
+
 })();
 
 const projectData = [
     {
         id: "project1",
-        images: ["static/img/portfolio/portfolio-details-1.png", "static/img/portfolio/portfolio-details-2.png", "static/img/portfolio/portfolio-details-3.png"],
+        images: ["../img/portfolio/portfolio-details-1.png", "static/img/portfolio/portfolio-details-2.png", "static/img/portfolio/portfolio-details-3.png"],
         info: {
             category: "Website Development",
-            date: "01 March, 2020",
+            date: "June, 2025",
             url: "https://elaiyarani-s.github.io/MyPortfolio/",
             urlText: "MyPortfolio",
         },
@@ -287,7 +283,7 @@ const projectData = [
         images: ["static/img/portfolio/portfolio-details-4.png", "static/img/portfolio/portfolio-details-5.png", "static/img/portfolio/portfolio-details-6.png"],
         info: {
             category: "Website Development",
-            date: "23 July, 2025",
+            date: "July, 2025",
             url: "https://reha-radio.onrender.com",
             urlText: "REHA Radio",
         },
@@ -304,15 +300,34 @@ const projectData = [
     },
     {
         id: "project3",
-        images: ["static/img/portfolio/portfolio-details-1.png", "static/img/portfolio/portfolio-details-2.png", "static/img/portfolio/portfolio-details-3.png"],
+        images: ["static/img/portfolio/portfolio-details-16.png", "static/img/portfolio/portfolio-details-21.png", 
+            "static/img/portfolio/portfolio-details-23.png","static/img/portfolio/portfolio-details-17.png",
+            "static/img/portfolio/portfolio-details-18.png","static/img/portfolio/portfolio-details-19.png",
+            "static/img/portfolio/portfolio-details-20.png","static/img/portfolio/portfolio-details-22.png"],
         info: {
             category: "Website Development",
-            date: "18 July, 2025",
-            url: "https://github.com/elaiyarani-s/SkillSwap.git",
+            date: "July, 2025",
+            url: "https://github.com/elaiyarani-s/MyPortfolio-Django",
             urlText: "MyPortfolio",
         },
         description: {
-            title: "My Personal Portfolio",
+            title: "MyPortfolio - Django",
+            points: ["Built a portfolio web app using Django, showcasing my background, projects, and blog posts. Features user authentication, responsive design, and deploy-ready architecture"],
+        },
+    },
+    {
+        id: "project4",
+        images: ["static/img/portfolio/portfolio-details-7.png", "static/img/portfolio/portfolio-details-10.png","static/img/portfolio/portfolio-details-9.png",
+            "static/img/portfolio/portfolio-details-8.png","static/img/portfolio/portfolio-details-11.png","static/img/portfolio/portfolio-details-12.png"
+        ,"static/img/portfolio/portfolio-details-13.png","static/img/portfolio/portfolio-details-14.png","static/img/portfolio/portfolio-details-15.png"],
+        info: {
+            category: "Website Development",
+            date: "July, 2025",
+            url: "https://github.com/project-django-group5/Skillswap",
+            urlText: "SkillSwap",
+        },
+        description: {
+            title: "SkillSwap",
             points: ["Developed a skill sharing platform using Django, Javascript, HTML, CSS and Bootstrap 5.", "Dark/light theme toggle", "Responsive across all screens"],
         },
     },
@@ -371,9 +386,16 @@ class ProjectViewer {
     `;
 
         // Swiper initialization
+        new Swiper(".portfolio-details-slider", {
+            speed: 400,
+            loop: true,
+            autoplay: { delay: 5000, disableOnInteraction: false },
+            pagination: { el: ".swiper-pagination", type: "bullets", clickable: true },
+        });
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
     const viewer = new ProjectViewer(projectData);
     viewer.renderAll();
 });
+
