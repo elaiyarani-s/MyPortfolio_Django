@@ -1,0 +1,14 @@
+
+{% extends "admin/base.html" %}
+{% load static %}
+{% block branding %}
+  <h1 id="site-name">
+    <img src="{% static 'images/logo.svg' %}" style="height:30px;vertical-align:middle;">
+    My Portfolio Admin
+  </h1>
+{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/custom-admin.css' %}">
+{% endblock %}

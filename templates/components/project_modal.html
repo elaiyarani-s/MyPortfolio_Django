@@ -1,0 +1,36 @@
+<div class="modal fade" id="projectModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="projectModalLabel{{ forloop.counter }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel{{ forloop.counter }}">{{ project.title }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="row g-2">
+                            {% for image in project.images.all %}
+                            <div class="col-6">
+                                <a href="{{ image.image.url }}" class="glightbox">
+                                    <img src="{{ image.image.url }}" class="img-fluid rounded" alt="{{ project.title }} image" />
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <h6>Description</h6>
+                        <p>{{ project.description }}</p>
+                        <ul class="list-unstyled">
+                            {% if project.github_link %}
+                            <li><strong>GitHub:</strong> <a href="{{ project.github_link }}" target="_blank">{{ project.title }}.git</a></li>
+                            {% endif %} {% if project.detail_url %}
+                            <li><strong>Live Site:</strong> <a href="{{ project.detail_url }}" target="_blank">{{ project.title }}</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

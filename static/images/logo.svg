@@ -1,0 +1,6 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="30" viewBox="0 0 300 60">
+  <rect width="300" height="60" fill="#0d6efd"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+        fill="white" font-size="20" font-family="Arial">My Portfolio</text>
+</svg>
