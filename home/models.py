@@ -15,7 +15,7 @@ class Project(models.Model):
     description = models.TextField(blank=True)
     github_link = models.URLField(blank=True)
     detail_url = models.URLField(blank=True)
-    tags = models.ManyToManyField(Tag, related_name='projects', blank=True)
+    tags = models.ManyToManyField(Tag, related_name='tags', blank=True)
 
     class Meta:
         ordering = ['-id'] 
