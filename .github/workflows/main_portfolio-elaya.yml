@@ -31,6 +31,9 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Run collectstatic
+        run: python manage.py collectstatic
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -58,4 +61,5 @@ jobs:
         with:
           app-name: 'Portfolio-Elaya'
           slot-name: 'Production'
+
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C1C1FDA42F02418CBD303A8898C48A5A }}
